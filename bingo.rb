@@ -103,7 +103,7 @@ class Bingo
       # trueなら文字数が100文字以内かチェック
       if s =~ /\A[0-9a-z]+\z/i and s.length <= 100
 
-        result << i
+        result << s
       end
     end
 
