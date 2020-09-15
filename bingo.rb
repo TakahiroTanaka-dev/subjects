@@ -28,26 +28,50 @@ class Bingo
     end
   end
 
+  # SxSのサイズを受け取るメソッドです
+  # 返り値：正常なら3から1000の半角数字、異常ならnil
+  # ()-> Integer or nil
   def stage1
     result = nil
 
+    # 標準入力から文字を受け取ります
+    # 改行コードが入ってくるのでchopで削除します
     line = (gets).chop
-    if line and line =~ /\A(\d{1,3})\z/ and (i = $1.to_i).between?(3,1000)
+
+    # 受け取った文字が半角数字1から3桁で有るかをチェック
+    # trueなら入力された数字が3-1000で有るかチェック
+    if line =~ /\A(\d{1,3})\z/ and (i = $1.to_i).between?(3,1000)
+
+      # 返り値に受け取った数字を代入
       result = i
     end
 
     result
   end
 
+  # ビンゴカードの単語を受け取るメソッドです
+  # 返り値：受け取った単語をまとめたarray
+  # ()-> Array
   def stage2
     result = []
 
+    # Sサイズ分回します
     @line1.times do
+
+      # 標準入力から文字を受け取ります
+      # 改行コードが入ってくるのでchopで削除します
       s = (gets).chop
 
+      # 受け取った文字が半角英数字また、単語が複数の場合は半角スペースで区切られているかをチェック
+      # trueなら文字数が100文字以内かチェック
       if s =~ /\A[0-9a-z]+(\s+[0-9a-z]+)*?\z/i and s.length <= 100
+
+        # 半角スペースを区切りに分割してarrayする
         s = s.split(/\s+/)
+
+        # 単語の数がSサイズと同じかチェック
         if s.size == @line1
+          # 返り値のarrayに追加
           result << s
         end
       end
@@ -56,23 +80,45 @@ class Bingo
     result
   end
 
+  # 選ばれた単語の数、Nを受け取るメソッドです
+  # 返り値：正常なら1から2000の半角数字、異常ならnil
+  # ()-> Integer or nil
   def stage3
     result = nil
+
+    # 標準入力から文字を受け取ります
+    # 改行コードが入ってくるのでchopで削除します
     line = (gets).chop
 
-    if line and line =~ /\A(\d{1,3})\z/ and (i = $1.to_i).between?(1,2000)
+    # 受け取った文字が半角数字1から3桁で有るかをチェック
+    # trueなら入力された数字が1-2000で有るかチェック
+    if line =~ /\A(\d{1,3})\z/ and (i = $1.to_i).between?(1,2000)
+
+      # 返り値に受け取った数字を代入
       result = i
     end
+
     result
   end
 
+  # 選ばれた単語、N行を受け取るメソッドです
+  # 返り値：受け取った単語をまとめたarray
+  # ()-> Array
   def stage4
     result = []
 
+    # N行分回します
     @line3.times do
+
+      # 標準入力から文字を受け取ります
+      # 改行コードが入ってくるのでchopで削除します
       s = (gets).chop
 
+      # 受け取った文字が半角英数字かをチェック
+      # trueなら文字数が100文字以内かチェック
       if s =~ /\A[0-9a-z]+\z/i and s.length <= 100
+
+        # 返り値のarrayに追加
         result << s
       end
     end
@@ -193,4 +239,3 @@ puts "Bye!".center(18)
 puts "^^^^^^^^^^^^^^^^^^"
 
 exit(0)
-
