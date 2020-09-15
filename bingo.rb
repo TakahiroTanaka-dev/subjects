@@ -137,7 +137,7 @@ class Bingo
   end
 
   def make_map
-    base = (1..@line1).to_i
+    base = (1..@line1).to_a
     tmap = []
     tmap << base.map.with_index{|a,j| 1 + (j*@line1.succ)}
     tmap << base.map.with_index{|a,j| @line1 + (j*(@line1-1))}
