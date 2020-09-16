@@ -201,7 +201,7 @@ begin
     bingo = Bingo::new
     bingo.party()
 
-    if r = bingo.bingo?
+    if d = bingo.bingo?
       puts "yes"
     else
       puts "no"
