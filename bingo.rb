@@ -146,6 +146,7 @@ class Bingo
 
   public
 
+  # ビンゴかどうかを判定
   def bingo?
     result = nil
     make()
